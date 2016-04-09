@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Retkipäiväkirja</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Asetukset</string>
+
+    <string name="action_drawer_routes">Kohteet</string>
+    <string name="action_drawer_pois">Kohdepisteet</string>
+    <string name="action_drawer_images">Kuvat</string>
+    <string name="action_drawer_tools">Työkalut</string>
+    <string name="nav_header_rw">Redneck-Wanderers</string>
+    <string name="nav_header_rw_slogan">Vaellus kuuluu elämään...</string>
+
+</resources>
