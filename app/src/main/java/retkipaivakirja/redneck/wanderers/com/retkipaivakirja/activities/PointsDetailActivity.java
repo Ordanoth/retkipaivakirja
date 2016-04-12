@@ -2,6 +2,7 @@ package retkipaivakirja.redneck.wanderers.com.retkipaivakirja.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.WindowManager;
 
@@ -11,7 +12,7 @@ import retkipaivakirja.redneck.wanderers.com.retkipaivakirja.adapter.PagerAdapte
 /**
  * Created by Ari Iivari on 23.3.2015.
  */
-public class PointsDetailActivity extends Activity {
+public class PointsDetailActivity extends FragmentActivity {
     public static final String TAG = "HikingDiary";
 
     @Override
@@ -23,7 +24,7 @@ public class PointsDetailActivity extends Activity {
         setContentView(R.layout.activity_point_pager);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
 
-        pager.setAdapter(new PagerAdapter(getFragmentManager(), (java.util.List<retkipaivakirja.redneck.wanderers.com.retkipaivakirja.model.Point>) getIntent().getExtras().getSerializable("SWIPEACTIVITY")));
+        pager.setAdapter(new PagerAdapter(getSupportFragmentManager(), (java.util.List<retkipaivakirja.redneck.wanderers.com.retkipaivakirja.model.Point>) getIntent().getExtras().getSerializable("SWIPEACTIVITY")));
         pager.setCurrentItem(getIntent().getExtras().getInt("SWIPEACTIVITYID"));
     }
 }
