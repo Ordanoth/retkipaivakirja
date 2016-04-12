@@ -12,8 +12,22 @@
     tools:context="retkipaivakirja.redneck.wanderers.com.retkipaivakirja.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <ListView
+    android:id="@+id/lvTrips"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true" />
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_empty_list_routes"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerInParent="true"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:text="@string/no_routes"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@android:color/darker_gray"
+        android:visibility="gone" />
+
 </RelativeLayout>
