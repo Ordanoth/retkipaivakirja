@@ -31,7 +31,7 @@
     <string name="add_route">Lisää kohde</string>
     <string name="route_name">Kohteennimi</string>
     <string name="route_date">Päivämäärä</string>
-    <string name="no_routes">Ei kohteita tietokannassa. Luo uusi kohde valitsemalla lisää-painike oikeasta yläreunasta.</string>
+    <string name="no_routes">Ei kohteita tietokannassa. Luo uusi kohde painamalla +-painiketta.</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna est, varius tristique posuere in, dapibus sit amet nibh. Nam ac purus a nulla imperdiet lobortis at id elit. Sed et sapien nunc. Pellentesque sodales, tortor id convallis convall </string>
     <string name="common_save">Tallenna</string>
     <string name="location_url">Linkki\nKartalle</string>

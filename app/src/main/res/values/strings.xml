@@ -31,7 +31,7 @@
     <string name="add_route">Add route</string>
     <string name="route_name">Route name</string>
     <string name="route_date">Date</string>
-    <string name="no_routes">There are no routes in the database. Create a new route, click the Add button at the top right.</string>
+    <string name="no_routes">There are no routes in the database. Create a new route, click the +-button.</string>
     <string name="no_points">There are no points in the database. Create a new point, click the Add button at the top right.</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna est, varius tristique posuere in, dapibus sit amet nibh. Nam ac purus a nulla imperdiet lobortis at id elit. Sed et sapien nunc. Pellentesque sodales, tortor id convallis convall </string>
     <string name="common_save">Save</string>
