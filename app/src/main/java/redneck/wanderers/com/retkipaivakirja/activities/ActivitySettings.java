@@ -1,16 +1,16 @@
 package redneck.wanderers.com.retkipaivakirja.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -26,7 +26,7 @@ import redneck.wanderers.com.retkipaivakirja.R;
 /**
  * Created by Ari Iivari on 17.3.2015.
  */
-public class ActivitySettings extends Activity implements OnClickListener {
+public class ActivitySettings extends AppCompatActivity implements OnClickListener {
 
     public static final String TAG = "HikingDiary";
     private static String DB_BU_PATH = "/HikingDiary/backups/";
@@ -40,7 +40,8 @@ public class ActivitySettings extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         prefs = this.getSharedPreferences("redneck.wanderers.com.retkipaivakirja", Context.MODE_PRIVATE);
         setTitle(getString(R.string.settings_label));
         initViews();

@@ -12,6 +12,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -19,7 +21,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,7 +43,7 @@ import redneck.wanderers.com.retkipaivakirja.model.Point;
 /**
  * Created by Ari Iivari on 26.2.2015.
  */
-public class ActivityEditPoint extends Activity implements OnClickListener {
+public class ActivityEditPoint extends AppCompatActivity implements OnClickListener {
 
     public static final String TAG = "HikingDiary";
     public static final String PHOTO_PATH = "/HikingDiary/photos";
@@ -87,7 +88,8 @@ public class ActivityEditPoint extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_point);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         initViews();
 

@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,7 +31,7 @@ import redneck.wanderers.com.retkipaivakirja.model.Route;
 /**
  * Created by Ari Iivari on 23.3.2015.
  */
-public class PointsActivity extends Activity implements OnItemLongClickListener, OnItemClickListener {
+public class PointsActivity extends AppCompatActivity implements OnItemLongClickListener, OnItemClickListener {
 
     public static final String TAG = "HikingDiary";
 
@@ -50,7 +52,8 @@ public class PointsActivity extends Activity implements OnItemLongClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poits_listview);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         setTitle(R.string.pointlist_activity);
         initViews();
     }

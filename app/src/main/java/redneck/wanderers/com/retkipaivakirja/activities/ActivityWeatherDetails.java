@@ -1,12 +1,12 @@
 package redneck.wanderers.com.retkipaivakirja.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +17,7 @@ import redneck.wanderers.com.retkipaivakirja.model.Point;
 /**
  * Created by Ari Iivari on 1.4.2015.
  */
-public class ActivityWeatherDetails extends Activity {
+public class ActivityWeatherDetails extends AppCompatActivity {
 
     public static final String TAG = "HikingDiary";
 
@@ -33,7 +33,8 @@ public class ActivityWeatherDetails extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_details);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         setTitle(R.string.weather_information_header);
 
         initViews();

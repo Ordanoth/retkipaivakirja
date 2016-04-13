@@ -17,6 +17,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -26,7 +28,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -63,7 +64,7 @@ import static java.lang.String.format;
 /**
  * Created by Ari Iivari on 26.2.2015.
  */
-public class ActivityAddPoint extends Activity implements OnClickListener {
+public class ActivityAddPoint extends AppCompatActivity implements OnClickListener {
 
     public static final String TAG = "HikingDiary";
     public static final String PHOTO_PATH = "/HikingDiary/photos";
@@ -113,7 +114,8 @@ public class ActivityAddPoint extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_point);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         setTitle(R.string.point_add);
 
          prefs = this.getSharedPreferences(
