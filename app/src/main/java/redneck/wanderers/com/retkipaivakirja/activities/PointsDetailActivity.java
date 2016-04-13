@@ -17,8 +17,6 @@ public class PointsDetailActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.point_activity);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         setContentView(R.layout.activity_point_pager);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
