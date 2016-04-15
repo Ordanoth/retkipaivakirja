@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -14,9 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -34,7 +34,7 @@ public class ActivityAddRoute extends AppCompatActivity implements OnClickListen
 
     private EditText mTxtRouteName;
     private TextView mTvRouteDate;
-    private ImageButton mBtnChangeDate;
+//    private ImageButton mBtnChangeDate;
     private int mSelectedYear;
     private int mSelectedMonth;
     private int mSelectedDay;
@@ -60,6 +60,27 @@ public class ActivityAddRoute extends AppCompatActivity implements OnClickListen
         setTitle(getString(R.string.route_add));
         initViews();
         this.mRouteDao = new RouteDAO(this);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabSave);
+        assert fab != null;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Editable routeName = mTxtRouteName.getText();
+                String routeDate = mTvRouteDate.getText().toString();
+                if (!TextUtils.isEmpty(routeName) && !TextUtils.isEmpty(routeDate)) {
+                    Route createdRoute = mRouteDao.createRoute(routeName.toString(), routeDate);
+                    Intent intent = new Intent();
+                    intent.putExtra(MainActivity.EXTRA_ADDED_ROUTE, createdRoute);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                } else {
+//                    Toast.makeText(this, R.string.empty_fields_message, Toast.LENGTH_LONG).show();
+                    Snackbar.make(view, R.string.empty_fields_message, Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -75,20 +96,6 @@ public class ActivityAddRoute extends AppCompatActivity implements OnClickListen
             case R.id.action_info:
                 showAbout();
                 break;
-            case R.id.action_save:
-                Editable routeName = mTxtRouteName.getText();
-                String routeDate = mTvRouteDate.getText().toString();
-                if (!TextUtils.isEmpty(routeName) && !TextUtils.isEmpty(routeDate)) {
-                    Route createdRoute = mRouteDao.createRoute(routeName.toString(), routeDate);
-                    Intent intent = new Intent();
-                    intent.putExtra(MainActivity.EXTRA_ADDED_ROUTE, createdRoute);
-                    setResult(RESULT_OK, intent);
-                    Toast.makeText(this, R.string.route_created_successfully, Toast.LENGTH_LONG).show();
-                    finish();
-                } else {
-                    Toast.makeText(this, R.string.empty_fields_message, Toast.LENGTH_LONG).show();
-                }
-                break;
             default:
                 break;
         }
@@ -98,7 +105,6 @@ public class ActivityAddRoute extends AppCompatActivity implements OnClickListen
     private void initViews() {
         this.mTxtRouteName = (EditText) findViewById(R.id.routeEditText);
         this.mTvRouteDate = (TextView) findViewById(R.id.dateEditText);
-        this.mBtnChangeDate = (ImageButton) findViewById(R.id.btn_change_date);
 
         Calendar calendar = Calendar.getInstance();
         this.mSelectedYear = calendar.get(Calendar.YEAR);
@@ -106,14 +112,13 @@ public class ActivityAddRoute extends AppCompatActivity implements OnClickListen
         this.mSelectedDay = calendar.get(Calendar.DAY_OF_MONTH);
         updateDateUI();
 
-        this.mBtnChangeDate.setOnClickListener(this);
+//        this.mBtnChangeDate.setOnClickListener(this);
         this.mTvRouteDate.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_change_date:
             case R.id.dateEditText:
                 showDatePickerDialog(mSelectedYear, mSelectedMonth, mSelectedDay, mOnDateSetListener);
                 break;

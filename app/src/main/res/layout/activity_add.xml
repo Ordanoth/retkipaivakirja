@@ -9,22 +9,21 @@
         android:layout_height="wrap_content"
         android:text="@string/route_name"
         android:textStyle="bold"
-        android:height="25dp"
+        android:height="30dp"
         android:textSize="@dimen/routeFontSize"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/routeEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="256dp"
+        android:layout_height="36dp"
         android:hint="Anna kohteennimi"
         android:textSize="@dimen/routeFontSize"
-        android:layout_below="@+id/routeTextView"
         android:background="@drawable/back"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/routeTextView"/>
 
     <TextView
         android:id="@+id/dateTextView"
@@ -36,7 +35,7 @@
         android:layout_below="@+id/routeEditText"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginStart="10dp"/>
 
     <TextView
         android:id="@+id/dateEditText"
@@ -45,12 +44,12 @@
         android:gravity="center"
         android:text="1.1.2000"
         android:textSize="@dimen/routeFontSize"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/dateTextView"
         android:background="@drawable/back"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/dateTextView"/>
 
-    <ImageButton
+    <!--ImageButton
         android:id="@+id/btn_change_date"
         style="?android:attr/buttonStyleSmall"
         android:textColor="#FFFFFF"
@@ -59,6 +58,19 @@
         android:src="@drawable/ic_event_black_24dp"
         android:background="@drawable/buttonaddshape"
         android:shadowColor="#A8A8A8"
-        android:layout_below="@+id/dateTextView"
-        android:layout_toEndOf="@+id/routeTextView" />
+        android:layout_alignTop="@+id/dateEditText"
+        android:layout_alignStart="@+id/dateTextView"/-->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_save_white_48dp"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginBottom="43dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="48dp"/>
 </RelativeLayout>

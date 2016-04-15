@@ -1,15 +1,19 @@
 package redneck.wanderers.com.retkipaivakirja.activities;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -41,11 +45,12 @@ public class MainActivity extends AppCompatActivity
 
     public static final int REQUEST_CODE_ADD_ROUTE = 40;
     public static final int REQUEST_CODE_IMPORT_DB = 41;
-
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     public static final String EXTRA_ADDED_ROUTE = "extra_key_added_route";
 
     private ListView mListViewRoutes;
     private TextView mTxtEmptyListRoutes;
+    private View mLayout;
 
     private ListRoutesAdapter mAdapter;
     private List<Route> mListRoutes;
@@ -64,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         if(prefs.getString("rw_language", null) == null){
             SharedPreferences.Editor edit  = prefs.edit();
             edit.putString("rw_language", "en");
-            edit.commit();
+            edit.apply();
             Locale locale = new Locale("en");
             Locale.setDefault(locale);
             Configuration config = new Configuration();
@@ -83,12 +88,18 @@ public class MainActivity extends AppCompatActivity
         String DB_FOLDER = "/Android/data/redneck.wanderers.com.retkipaivakirja/databases";
         File direct = new File(Environment.getExternalStorageDirectory().getPath() + DB_FOLDER);
 
-        if(!direct.exists())
-        {
-            Log.e(TAG, DB_FOLDER + " ei ole olemassa");
-            if(direct.mkdirs())
-            {
-                Log.d(TAG, DB_FOLDER + " LUOTU!!!");
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Camera permission has not been granted.
+
+            requestStoragePermission();
+
+        } else {
+            if (!direct.exists()) {
+                Log.e(TAG, DB_FOLDER + " ei ole olemassa");
+                if (direct.mkdirs()) {
+                    Log.d(TAG, DB_FOLDER + " LUOTU!!!");
+                }
             }
         }
 
@@ -104,11 +115,12 @@ public class MainActivity extends AppCompatActivity
         }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ActivityAddRoute.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_ADD_ROUTE);
             }
         });
 
@@ -123,6 +135,15 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+
+//    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+//        new AlertDialog.Builder(MainActivity.this)
+//                .setMessage(message)
+//                .setPositiveButton("OK", okListener)
+//                .setNegativeButton("Cancel", null)
+//                .create()
+//                .show();
+//    }
 
     @Override
     public void onBackPressed() {
@@ -173,6 +194,36 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void requestStoragePermission() {
+        Log.i(TAG, "CAMERA permission has NOT been granted. Requesting permission.");
+
+        // BEGIN_INCLUDE(camera_permission_request)
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            // Provide an additional rationale to the user if the permission was not granted
+            // and the user would benefit from additional context for the use of the permission.
+            // For example if the user has previously denied the permission.
+            Log.i(TAG,
+                    "Displaying camera permission rationale to provide additional context.");
+            Snackbar.make(mLayout, "Storage permission",
+                    Snackbar.LENGTH_INDEFINITE)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ActivityCompat.requestPermissions(MainActivity.this,
+                                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                    REQUEST_CODE_ASK_PERMISSIONS);
+                        }
+                    })
+                    .show();
+        } else {
+
+            // Camera permission has not been granted yet. Request it directly.
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_CODE_ASK_PERMISSIONS);
+        }
     }
 
     private void initViews() {

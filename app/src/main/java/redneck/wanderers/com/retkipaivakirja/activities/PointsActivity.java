@@ -51,6 +51,16 @@ public class PointsActivity extends AppCompatActivity implements OnItemLongClick
         setContentView(R.layout.activity_poits_listview);
         setTitle(R.string.pointlist_activity);
         initViews();
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddPoint);
+//        assert fab != null;
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(PointsActivity.this, ActivityAddPoint.class);
+//                intent.putExtra(ActivityAddPoint.EXTRA_SELECTED_ROUTE_ID, mRouteId);
+//                startActivityForResult(intent, REQUEST_CODE_ADD_POINT);
+//            }
+//        });
     }
 
     @Override

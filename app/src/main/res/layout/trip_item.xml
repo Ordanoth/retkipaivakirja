@@ -6,6 +6,7 @@
     <TextView
         android:id="@+id/PlaceName"
         android:text="Juuu"
+        android:textSize="28sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -19,6 +20,7 @@
         <TextView
             android:id="@+id/textStartDay"
             android:text="Hoplaa"
+            android:textSize="26sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall" />

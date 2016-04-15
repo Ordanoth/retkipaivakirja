@@ -1,12 +1,12 @@
 package redneck.wanderers.com.retkipaivakirja.activities;
 
-import android.support.v7.app.AlertDialog;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
