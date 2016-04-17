@@ -58,7 +58,7 @@
     <string name="weather_windir">Wind direction</string>
     <string name="weather_humidity">Humidity</string>
     <string name="weather_location">Location</string>
-    <string name="weather_Title">Weather information</string>
+    <string name="weather_Title">Weather </string>
     <string name="common_percent">%</string>
     <string name="common_celsius">°C</string>
     <string name="common_deg">°</string>
@@ -105,4 +105,7 @@
     <string name="weather_sunset">Sunset</string>
     <string name="weather_uv_index">UV index</string>
     <string name="weather_visibility">Visibility</string>
+    <string name="pointname">Point name</string>
+    <string name="point"></string>
+    <string name="location">Location</string>
 </resources>

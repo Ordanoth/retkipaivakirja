@@ -1,6 +1,6 @@
-/.idea
-/.idea/workspace.xml
-/.gradle
+/.idea/*
+/.gradle/*
+/build/*
 local.properties
 # Windows image file caches
 Thumbs.db

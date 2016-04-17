@@ -57,7 +57,7 @@
     <string name="weather_windir">Tuulen suunta</string>
     <string name="weather_humidity">Kosteus</string>
     <string name="weather_location">Paikkakunta</string>
-    <string name="weather_Title">Säätiedot</string>
+    <string name="weather_Title">Sää</string>
     <string name="common_percent">%</string>
     <string name="common_celsius">°C</string>
     <string name="common_deg">°</string>
@@ -105,4 +105,7 @@
     <string name="weather_sunset">Aurinko laskee</string>
     <string name="weather_uv_index">UV-indeksi</string>
     <string name="weather_visibility">Näkyvyys</string>
+    <string name="pointname">Kohdepiste</string>
+    <string name="point"></string>
+    <string name="location">Sijainti</string>
 </resources>

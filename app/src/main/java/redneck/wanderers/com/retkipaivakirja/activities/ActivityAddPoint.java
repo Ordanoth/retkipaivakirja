@@ -85,7 +85,7 @@ public class ActivityAddPoint extends AppCompatActivity implements OnClickListen
 
     private TextView mCityText, mCondDescr, mTemp, mHum, mPress, mWindSpeed, mWindDeg, mWeatherTitle, mWeatherPressTitle, mWindTitle, mHumTitle;
     private ImageView mImgView;
-    private Button mBtnGetWeather;
+    private ImageButton mBtnGetWeather, mBtnImage;
     private EditText mWorldWeatherEdit;
 
     private RouteDAO mRouteDao;
@@ -410,7 +410,7 @@ public class ActivityAddPoint extends AppCompatActivity implements OnClickListen
         this.mTxtDesc = (EditText) findViewById(R.id.edit_txt_point_add_desc);
         this.mTxtPointLAT = (EditText) findViewById(R.id.edit_txt_point_add_lat_text);
         this.mTxtPointLON = (EditText) findViewById(R.id.edit_txt_point_add_lon_text);
-        this.mTxtPointImage = (ImageView) findViewById(R.id.image_point_add);
+        this.mTxtPointImage = (ImageView) findViewById(R.id.imageEditView);
         ImageButton mBtnGetCoord = (ImageButton) findViewById(R.id.btn_get_location);
 
         Calendar calendar = Calendar.getInstance();
@@ -425,7 +425,7 @@ public class ActivityAddPoint extends AppCompatActivity implements OnClickListen
 
         //Weather
         this.mWeatherTitle = (TextView) findViewById(R.id.weatherTitle);
-        this.mCityText = (TextView) findViewById(R.id.stationText);
+//        this.mCityText = (TextView) findViewById(R.id.stationText);
 
         this.mCondDescr = (TextView) findViewById(R.id.condDescr);
         this.mTemp = (TextView) findViewById(R.id.temp);
@@ -434,8 +434,10 @@ public class ActivityAddPoint extends AppCompatActivity implements OnClickListen
         this.mWindSpeed = (TextView) findViewById(R.id.windSpeed);
         this.mWindDeg = (TextView) findViewById(R.id.windDeg);
         this.mImgView = (ImageView) findViewById(R.id.condIcon);
-        this.mBtnGetWeather = (Button) findViewById(R.id.btn_get_weather);
+        this.mBtnGetWeather = (ImageButton) findViewById(R.id.btn_get_weather);
         this.mBtnGetWeather.setOnClickListener(this);
+        this.mBtnImage = (ImageButton) findViewById(R.id.image_point_add);
+        this.mBtnImage.setOnClickListener(this);
         this.mWeatherPressTitle = (TextView) findViewById(R.id.pressLab);
         this.mWindTitle = (TextView) findViewById(R.id.windLab);
         this.mHumTitle = (TextView) findViewById(R.id.humLab);
@@ -694,24 +696,24 @@ public class ActivityAddPoint extends AppCompatActivity implements OnClickListen
 //            mCityText.setText(worldweather.location.getCity() + "," + worldweather.location.getCountry());
             mCondDescr.setText(worldweather.currentCondition.getWeatherDesc());
             mTemp.setText(worldweather.currentCondition.getTempCur() + getString(R.string.common_celsius));
-            mHum.setText("" + worldweather.currentCondition.getHumidity() + getString(R.string.common_percent));
-            mPress.setText("" + worldweather.currentCondition.getPressure() + " " + getString(R.string.common_hpa));
-            int iWindSpeed = worldweather.currentCondition.getWindspeed() * 1000/ 3600;
-            mWindSpeed.setText(iWindSpeed + " " + getString(R.string.common_speed));
-            mWindDeg.setText("" + worldweather.currentCondition.getWindDir() + getString(R.string.common_deg));
+//            mHum.setText("" + worldweather.currentCondition.getHumidity() + getString(R.string.common_percent));
+//            mPress.setText("" + worldweather.currentCondition.getPressure() + " " + getString(R.string.common_hpa));
+//            int iWindSpeed = worldweather.currentCondition.getWindspeed() * 1000/ 3600;
+//            mWindSpeed.setText(iWindSpeed + " " + getString(R.string.common_speed));
+//            mWindDeg.setText("" + worldweather.currentCondition.getWindDir() + getString(R.string.common_deg));
 
 //            mCityText.setVisibility(View.VISIBLE);
-            mCondDescr.setVisibility(View.VISIBLE);
+//            mCondDescr.setVisibility(View.VISIBLE);
             mTemp.setVisibility(View.VISIBLE);
-            mHum.setVisibility(View.VISIBLE);
-            mPress.setVisibility(View.VISIBLE);
-            mWindSpeed.setVisibility(View.VISIBLE);
-            mWindDeg.setVisibility(View.VISIBLE);
+//            mHum.setVisibility(View.VISIBLE);
+//            mPress.setVisibility(View.VISIBLE);
+//            mWindSpeed.setVisibility(View.VISIBLE);
+//            mWindDeg.setVisibility(View.VISIBLE);
 
             mImgView.setVisibility(View.VISIBLE);
-            mWeatherPressTitle.setVisibility(View.VISIBLE);
-            mWindTitle.setVisibility(View.VISIBLE);
-            mHumTitle.setVisibility(View.VISIBLE);
+//            mWeatherPressTitle.setVisibility(View.VISIBLE);
+//            mWindTitle.setVisibility(View.VISIBLE);
+//            mHumTitle.setVisibility(View.VISIBLE);
 
             Log.e(TAG, "" + worldweather.area.getAreaName());
             Log.e(TAG, "" + worldweather.area.getCountry());
