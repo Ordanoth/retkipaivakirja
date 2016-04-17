@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -51,16 +52,16 @@ public class PointsActivity extends AppCompatActivity implements OnItemLongClick
         setContentView(R.layout.activity_poits_listview);
         setTitle(R.string.pointlist_activity);
         initViews();
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddPoint);
-//        assert fab != null;
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(PointsActivity.this, ActivityAddPoint.class);
-//                intent.putExtra(ActivityAddPoint.EXTRA_SELECTED_ROUTE_ID, mRouteId);
-//                startActivityForResult(intent, REQUEST_CODE_ADD_POINT);
-//            }
-//        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAddPoint);
+        assert fab != null;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PointsActivity.this, ActivityAddPoint.class);
+                intent.putExtra(ActivityAddPoint.EXTRA_SELECTED_ROUTE_ID, mRouteId);
+                startActivityForResult(intent, REQUEST_CODE_ADD_POINT);
+            }
+        });
     }
 
     @Override

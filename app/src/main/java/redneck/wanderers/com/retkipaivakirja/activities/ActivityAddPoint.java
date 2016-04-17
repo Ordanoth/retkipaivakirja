@@ -17,6 +17,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -186,105 +188,105 @@ public class ActivityAddPoint extends AppCompatActivity implements OnClickListen
         mSelectedRoute = mRouteDao.getRouteById(mRouteId);
         mGetCoordinates = new LocationAdapter(this);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabSave);
-//        assert fab != null;
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Bitmap photo = ((BitmapDrawable)mImgView.getDrawable()).getBitmap();
-//                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//                photo.compress(Bitmap.CompressFormat.PNG, 100, bos);
-//                String point_date = mTxtPointDate.getText().toString();
-//                String point_name = mTxtPointName.getText().toString();
-//                String pointDesc = mTxtDesc.getText().toString();
-//                String pointLAT = mTxtPointLAT.getText().toString();
-//                String pointLON = mTxtPointLON.getText().toString();
-//                String pointImage = mTxtPointImage.getTag().toString();
-//                SimpleDateFormat inFormat = new SimpleDateFormat("hh:mm aa", Locale.US);
-//                SimpleDateFormat outFormat = new SimpleDateFormat("HH:mm", Locale.GERMANY);
-//                String sunrise = mWeather.weather.getSunrise();
-//                String sunset = mWeather.weather.getSunset();
-//                String weather_sunrise = null;
-//                String weather_sunset = null;
-//                try {
-//                    weather_sunrise = outFormat.format(inFormat.parse(sunrise));
-//                    weather_sunset = outFormat.format(inFormat.parse(sunset));
-//                    Log.e(TAG, weather_sunrise + " " + weather_sunset );
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//                String weather_main = "";
-//                String weather_desc = mWeather.currentCondition.getWeatherDesc();
-//                String weather_desc_en = mWeather.currentCondition.getWeatherDescEn();
-//                byte[] weather_icon = bos.toByteArray();
-//                int weather_temp = mWeather.currentCondition.getTempCur();
-//                int weather_temp_f = mWeather.currentCondition.getTempCur();
-//                int weather_humidity = mWeather.currentCondition.getHumidity();
-//                int weather_pressure = mWeather.currentCondition.getPressure();
-//                int weather_temp_min = mWeather.weather.getTempMin();
-//                int weather_temp_min_f = mWeather.weather.getTempMinF();
-//                int weather_temp_max = mWeather.weather.getTempMax();
-//                int weather_temp_max_f = mWeather.weather.getTempMaxF();
-//                int weather_visibility = mWeather.currentCondition.getVisibility();
-//                int weather_windspeed = mWeather.currentCondition.getWindspeed();
-//                int weather_windspeed_miles = mWeather.currentCondition.getWindspeedMiles();
-//                int weather_windgust =0;
-//                int weather_windgust_miles =0;
-//                float weather_winddeg =mWeather.currentCondition.getWindDir();
-//                String weather_location_name =mWeather.area.getAreaName()+", " + mWeather.area.getRegion();
-//                String weather_location_country = mWeather.area.getCountry();
-//                String weather_winddir16Point = mWeather.currentCondition.getWindDir16();
-//                int weather_cloud_cover = mWeather.currentCondition.getCloudCover();
-//                int weather_feels_like_c = mWeather.currentCondition.getTempFeel();
-//                int weather_feels_like_f = mWeather.currentCondition.getTempFeel();
-//                float weather_precip_mm = mWeather.currentCondition.getWeatherPrecip();
-//                String moonrise = mWeather.weather.getMoonrise();
-//                String moonset = mWeather.weather.getMoonset();
-//                String weather_moonrise = null;
-//                String weather_moonset = null;
-//                try {
-//                    weather_moonrise = outFormat.format(inFormat.parse(moonrise));
-//                    weather_moonset = outFormat.format(inFormat.parse(moonset));
-//                    Log.e(TAG, weather_moonrise + " " + weather_moonset);
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//                String weather_wind_chill_c = "";
-//                String weather_wind_chill_f = "";
-//                int weather_uv_index = mWeather.weather.getUv();
-//
-//                Log.e(TAG, point_name + " " + point_date + " " + pointDesc);
-//
-//                if (!TextUtils.isEmpty(point_name) && !TextUtils.isEmpty(point_date)
-//                        && !TextUtils.isEmpty(pointDesc)) {
-//
-//                    // add the point to database
-//                    Point createdPoint = mPointDao.createPoint(point_name, point_date, pointDesc, pointLAT, pointLON, pointImage, weather_sunrise,
-//                            weather_sunset, weather_main, weather_desc, weather_desc_en, weather_icon,
-//                            weather_temp, weather_temp_f, weather_humidity, weather_pressure, weather_temp_min, weather_temp_min_f,
-//                            weather_temp_max, weather_temp_max_f, weather_visibility, weather_windspeed, weather_windspeed_miles, weather_windgust, weather_windgust_miles, weather_winddeg,
-//                            weather_winddir16Point, weather_location_name, weather_location_country, weather_cloud_cover, weather_feels_like_c, weather_feels_like_f, weather_precip_mm,
-//                            weather_moonrise, weather_moonset, weather_wind_chill_c, weather_wind_chill_f, weather_uv_index, mSelectedRoute.getId());
-//
-//                    /*
-//                    String pointName, String pointDate, String pointDesc,
-//
-//                            String pointLAT, String pointLON, String pointImage, String weather_sunrise,
-//                            String weather_sunset, String weather_main, String weather_desc, String weather_desc_en, byte[] weather_icon,
-//                    float weather_temp, float weather_temp_f, float weather_humidity, float weather_pressure, float weather_temp_min, float weather_temp_min_f,
-//                    float weather_temp_max, float weather_temp_max_f, int weather_visibility, float weather_windspeed, float weather_windspeed_miles, float weather_windgust, float weather_windgust_miles, float weather_winddeg,
-//                    ,
-//                    */
-//                    setResult(RESULT_OK);
-//                    mPointDao.close();
-//                    finish();
-//                } else {
-////                    Toast.makeText(this, R.string.empty_fields_message, Toast.LENGTH_LONG).show();
-//                    Snackbar.make(view, R.string.empty_fields_message, Snackbar.LENGTH_LONG)
-//                            .setAction("Action", null).show();
-//                }
-//            }
-//        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabSave);
+        assert fab != null;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bitmap photo = ((BitmapDrawable)mImgView.getDrawable()).getBitmap();
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                photo.compress(Bitmap.CompressFormat.PNG, 100, bos);
+                String point_date = mTxtPointDate.getText().toString();
+                String point_name = mTxtPointName.getText().toString();
+                String pointDesc = mTxtDesc.getText().toString();
+                String pointLAT = mTxtPointLAT.getText().toString();
+                String pointLON = mTxtPointLON.getText().toString();
+                String pointImage = mTxtPointImage.getTag().toString();
+                SimpleDateFormat inFormat = new SimpleDateFormat("hh:mm aa", Locale.US);
+                SimpleDateFormat outFormat = new SimpleDateFormat("HH:mm", Locale.GERMANY);
+                String sunrise = mWeather.weather.getSunrise();
+                String sunset = mWeather.weather.getSunset();
+                String weather_sunrise = null;
+                String weather_sunset = null;
+                try {
+                    weather_sunrise = outFormat.format(inFormat.parse(sunrise));
+                    weather_sunset = outFormat.format(inFormat.parse(sunset));
+                    Log.e(TAG, weather_sunrise + " " + weather_sunset );
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                String weather_main = "";
+                String weather_desc = mWeather.currentCondition.getWeatherDesc();
+                String weather_desc_en = mWeather.currentCondition.getWeatherDescEn();
+                byte[] weather_icon = bos.toByteArray();
+                int weather_temp = mWeather.currentCondition.getTempCur();
+                int weather_temp_f = mWeather.currentCondition.getTempCur();
+                int weather_humidity = mWeather.currentCondition.getHumidity();
+                int weather_pressure = mWeather.currentCondition.getPressure();
+                int weather_temp_min = mWeather.weather.getTempMin();
+                int weather_temp_min_f = mWeather.weather.getTempMinF();
+                int weather_temp_max = mWeather.weather.getTempMax();
+                int weather_temp_max_f = mWeather.weather.getTempMaxF();
+                int weather_visibility = mWeather.currentCondition.getVisibility();
+                int weather_windspeed = mWeather.currentCondition.getWindspeed();
+                int weather_windspeed_miles = mWeather.currentCondition.getWindspeedMiles();
+                int weather_windgust =0;
+                int weather_windgust_miles =0;
+                float weather_winddeg =mWeather.currentCondition.getWindDir();
+                String weather_location_name =mWeather.area.getAreaName()+", " + mWeather.area.getRegion();
+                String weather_location_country = mWeather.area.getCountry();
+                String weather_winddir16Point = mWeather.currentCondition.getWindDir16();
+                int weather_cloud_cover = mWeather.currentCondition.getCloudCover();
+                int weather_feels_like_c = mWeather.currentCondition.getTempFeel();
+                int weather_feels_like_f = mWeather.currentCondition.getTempFeel();
+                float weather_precip_mm = mWeather.currentCondition.getWeatherPrecip();
+                String moonrise = mWeather.weather.getMoonrise();
+                String moonset = mWeather.weather.getMoonset();
+                String weather_moonrise = null;
+                String weather_moonset = null;
+                try {
+                    weather_moonrise = outFormat.format(inFormat.parse(moonrise));
+                    weather_moonset = outFormat.format(inFormat.parse(moonset));
+                    Log.e(TAG, weather_moonrise + " " + weather_moonset);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                String weather_wind_chill_c = "";
+                String weather_wind_chill_f = "";
+                int weather_uv_index = mWeather.weather.getUv();
+
+                Log.e(TAG, point_name + " " + point_date + " " + pointDesc);
+
+                if (!TextUtils.isEmpty(point_name) && !TextUtils.isEmpty(point_date)
+                        && !TextUtils.isEmpty(pointDesc)) {
+
+                    // add the point to database
+                    Point createdPoint = mPointDao.createPoint(point_name, point_date, pointDesc, pointLAT, pointLON, pointImage, weather_sunrise,
+                            weather_sunset, weather_main, weather_desc, weather_desc_en, weather_icon,
+                            weather_temp, weather_temp_f, weather_humidity, weather_pressure, weather_temp_min, weather_temp_min_f,
+                            weather_temp_max, weather_temp_max_f, weather_visibility, weather_windspeed, weather_windspeed_miles, weather_windgust, weather_windgust_miles, weather_winddeg,
+                            weather_winddir16Point, weather_location_name, weather_location_country, weather_cloud_cover, weather_feels_like_c, weather_feels_like_f, weather_precip_mm,
+                            weather_moonrise, weather_moonset, weather_wind_chill_c, weather_wind_chill_f, weather_uv_index, mSelectedRoute.getId());
+
+                    /*
+                    String pointName, String pointDate, String pointDesc,
+
+                            String pointLAT, String pointLON, String pointImage, String weather_sunrise,
+                            String weather_sunset, String weather_main, String weather_desc, String weather_desc_en, byte[] weather_icon,
+                    float weather_temp, float weather_temp_f, float weather_humidity, float weather_pressure, float weather_temp_min, float weather_temp_min_f,
+                    float weather_temp_max, float weather_temp_max_f, int weather_visibility, float weather_windspeed, float weather_windspeed_miles, float weather_windgust, float weather_windgust_miles, float weather_winddeg,
+                    ,
+                    */
+                    setResult(RESULT_OK);
+                    mPointDao.close();
+                    finish();
+                } else {
+//                    Toast.makeText(this, R.string.empty_fields_message, Toast.LENGTH_LONG).show();
+                    Snackbar.make(view, R.string.empty_fields_message, Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            }
+        });
     }
 
     @Override
