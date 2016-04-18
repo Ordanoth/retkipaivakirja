@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_place_black_24dp"
         android:id="@+id/btn_get_location"
-        android:background="@drawable/buttonaddshape"
+        android:background="@drawable/buttonaddshapesmall"
         android:textColor="#FFFFFF"
         android:shadowColor="#A8A8A8"
         android:layout_marginLeft="10dp"

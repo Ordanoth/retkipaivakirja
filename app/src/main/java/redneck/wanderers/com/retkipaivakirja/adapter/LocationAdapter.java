@@ -127,27 +127,30 @@ public class LocationAdapter extends Service implements LocationListener {
                     }
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return location;
     }
 
     public void stopUsingGPS() {
         if (locationManager != null) {
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= 23 &&
+                    ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
+
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
                 //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
                 //                                          int[] grantResults)
                 // to handle the case where the user grants the permission. See the documentation
                 // for ActivityCompat#requestPermissions for more details.
+                locationManager.removeUpdates(LocationAdapter.this);
                 return;
+            } else {
+                locationManager.removeUpdates(LocationAdapter.this);
             }
-            locationManager.removeUpdates(LocationAdapter.this);
         }
     }
 

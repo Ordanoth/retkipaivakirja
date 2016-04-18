@@ -456,6 +456,7 @@ public class ActivityAddPoint extends AppCompatActivity implements OnClickListen
                 }else{
                     mGetCoordinates.showSettingsAlert();
                 }
+                mGetCoordinates.stopUsingGPS();
                 break;
             case R.id.image_point_add:
                 selectImage();

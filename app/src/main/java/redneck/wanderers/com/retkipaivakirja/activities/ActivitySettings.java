@@ -123,7 +123,7 @@ public class ActivitySettings extends AppCompatActivity implements OnClickListen
                 }
                 SharedPreferences.Editor edit  = prefs.edit();
                 edit.putString("rw_language", strLang);
-                edit.commit();
+                edit.apply();
                 Locale locale = new Locale(strLang);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
