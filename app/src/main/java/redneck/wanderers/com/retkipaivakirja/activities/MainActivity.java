@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        prefs = this.getSharedPreferences("com.wanderers.redneck.hikingdiary", Context.MODE_PRIVATE);
+        prefs = this.getSharedPreferences("redneck.wanderers.com.retkipaivakirja", Context.MODE_PRIVATE);
         Log.e(TAG, "SP = " + prefs.getString("rw_language", null));
         if(prefs.getString("rw_language", null) == null){
             SharedPreferences.Editor edit  = prefs.edit();
@@ -82,7 +83,6 @@ public class MainActivity extends AppCompatActivity
             config.locale = locale;
             getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
         }
-
         initViews();
 
         String DB_FOLDER = "/Android/data/redneck.wanderers.com.retkipaivakirja/databases";
